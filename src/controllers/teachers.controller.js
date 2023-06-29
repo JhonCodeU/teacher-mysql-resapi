@@ -7,7 +7,8 @@ const getTeachers = async (req, res) => {
     const [rows] = await pool.query(`SELECT * FROM ${table}`);
     return rows;
   } catch (error) {
-    return "Internal server error"
+    //return "Internal server error"
+    return error
   }
 };
 
