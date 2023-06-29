@@ -4,11 +4,13 @@ import { routes } from "./routes/index.routes.js";
 import { pool } from "./db/db.js";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import cors from "cors";
 
 const app = express();
 
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 const options = {
@@ -27,6 +29,11 @@ const options = {
     servers: [
       {
         url: "http://localhost:3000",
+        description: "Development server",
+      },
+      {
+        url: "https://teacher-mysql-resapi-production.up.railway.app/",
+        description: "Production server",
       },
     ],
   },
